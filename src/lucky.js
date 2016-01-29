@@ -113,7 +113,34 @@ Lucky.prototype.status = function (name, cb) {
   if (!name) {
     return cb('no name');
   }
-  this.collection.findOne({ name: name }, cb);
+  var that = this;
+  var count = 0;
+  var lasterr = null;
+  var rdata = {
+    finished: false
+  };
+  var fake_cb = function () {
+    count++;
+    if (count >= 2 && cb) {
+      cb(lasterr, rdata);
+    }
+  }
+  this.getLast(function (err, data) {
+    if (err) {
+      lasterr = err;
+    } else {
+      rdata.finished = (data && data.length <= 0);
+    }
+    fake_cb();
+  });
+  this.collection.findOne({ name: name }, function (err, data) {
+    if (err) {
+      lasterr = err;
+    } else {
+      rdata.me = data;
+    }
+    fake_cb();
+  });
 };
 
 module.exports = Lucky;

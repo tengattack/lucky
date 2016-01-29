@@ -85,6 +85,8 @@ io.on('connection', function (socket) {
       }
     });
   });
+  socket.on('error', function () {
+  });
   socket.on('init', function (data) {
     var name = (data && data.name) ? validator.trim(data.name) : null;
     if (name) {

@@ -10,29 +10,33 @@
   <div class="container">
     <nav class="navbar-default">LUCKY HAND</nav>
     <ul id="my-value-list" class="posts-list"></ul>
+    <div class="clearfix"></div>
     <ul id="others-value-list" class="posts-list"></ul>
     <div class="clearfix"></div>
     <div class="controls">
-      <div class="inputer" style="display:none">
+      <div class="inputer control" style="display:none">
         <input id="myname" placeholder="请输入你的名字"></input>
         <button id="myname-btn">确认</button>
       </div>
-      <div class="reseter" style="display:none">
+      <div class="reseter control" style="display:none">
         <input id="reset-data" placeholder="请输入数据，用半角空格隔开"></input>
         <button id="reset-btn">重置</button>
       </div>
-      <div class="getter" style="display:none">
-        <button id="get-btn">GET</button>
+      <div class="getter control" style="display:none">
+        <button id="get-btn">抽奖</button>
       </div>
-      <div class="valuer" style="display:none">
+      <div class="valuer control" style="display:none">
         <span id="myvalue"></span>
         <button disabled>点过辣！</button>
+      </div>
+      <div class="finisher control" style="display:none">
+        <button disabled>抽完辣！</button>
       </div>
     </div>
   </div>
   <script src="/socket.io/socket.io.js"></script>
   <script src="/js/jquery-2.2.0.min.js"></script>
   <script src="/js/moment-with-locales.min.js"></script>
-  <script src="/js/lucky.js"></script>
+  <script src="/js/lucky.js?v=20160129"></script>
 </body>
 </html>

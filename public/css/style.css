@@ -73,7 +73,7 @@ body:lang(zh-CN) {
 .clearfix:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; } 
 
 .controls {
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
   width: 480px;
   min-height: 50px;
@@ -184,6 +184,8 @@ body:lang(zh-CN) {
 
   margin: auto;
   background-color: #fff;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 nav {
@@ -202,4 +204,8 @@ nav {
 .navbar-default {
   background-color: white;
   border-color: #eee;
+}
+
+#others-value-list {
+  border-top: 1px solid #eee;
 }

@@ -12,10 +12,13 @@ socket.on('connect', function () {
 });
 socket.on('status', function (data) {
   // list all
-  if (data && data.value) {
-    updateMyValue(data.value);
+  if (data && data.me && data.me.value) {
+    updateMyValue(data.me.value);
   } else {
     showGetter();
+  }
+  if (data && data.finished) {
+    showFinished();
   }
 });
 socket.on('list', function (data) {
@@ -59,15 +62,21 @@ function updateMyName(name) {
   }
 }
 function updateMyValue(value) {
-  $('.getter').hide();
-  $('.inputer').hide();
+  $('.controls > .control').hide();
   $('.valuer #myvalue').text(value);
   $('.valuer').show();
 }
 function showGetter() {
-  $('.valuer').hide();
-  $('.inputer').hide();
+  $('.controls > .control').hide();
   $('.getter').show();
+}
+function showInputter() {
+  $('.controls > .control').hide();
+  $('.inputer').show();
+}
+function showFinished() {
+  $('.controls > .control').hide();
+  $('.finisher').show();
 }
 function addToList(data) {
   /*$('.posts-list').prepend('<li class="value">'
@@ -139,6 +148,6 @@ $(document).ready(function () {
   if (myname) {
     showGetter();
   } else {
-    $('.inputer').show();
+    showInputter();
   }
 });
