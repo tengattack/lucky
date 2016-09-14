@@ -1,7 +1,7 @@
 
 moment.locale('zh-CN');
 
-var socket = io('http://192.168.3.222:8081');
+var socket = io('/');
 var myname = localStorage.getItem('lucky_myname');
 
 socket.on('connect', function () {

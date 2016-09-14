@@ -21,6 +21,7 @@
   "homepage": "https://github.com/tengattack/lucky#readme",
   "dependencies": {
     "express": "^4.13.4",
+    "mongodb": "^2.2.9",
     "socket.io": "^1.4.5",
     "validator": "^4.5.2"
   }
