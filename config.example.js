@@ -2,7 +2,7 @@
 const config = {
   'web': {
     'hostname': '0.0.0.0',
-    'port': 8081
+    'port': 8088
   },
   'admin': {
     'reset_key': 'PzUbjGdnBU7wCcpEC8iIG5xrumGYiNAL',
