@@ -116,9 +116,6 @@ function addToList(data) {
 }
 
 $(document).ready(function () {
-  if (window.location.hash === '#reset') {
-    $('.reseter').show();
-  }
   $('.reseter #reset-btn').click(function () {
     var vals = $('.reseter #reset-data').val();
     if (vals) vals = vals.split(' ');
@@ -149,5 +146,9 @@ $(document).ready(function () {
     showGetter();
   } else {
     showInputter();
+  }
+  // for admin
+  if (window.location.hash === '#reset') {
+    $('.reseter').show();
   }
 });
