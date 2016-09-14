@@ -226,7 +226,6 @@ nav {
   line-height: 20px;
   height: 50px;
   min-height: 50px;
-  margin-bottom: 20px;
   border: 1px solid transparent;
   border-width: 0 0 1px;
 }
@@ -234,6 +233,10 @@ nav {
 .navbar-default {
   background-color: #242640;
   border-color: #74768c;
+}
+
+#my-value-list {
+  margin-bottom: -1px;
 }
 
 #others-value-list {
