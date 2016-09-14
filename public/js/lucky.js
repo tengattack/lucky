@@ -116,6 +116,10 @@ function addToList(data) {
 }
 
 $(document).ready(function () {
+  // for admin
+  if (window.location.hash === '#reset') {
+    $('.reseter').removeClass('control').show();
+  }
   $('.reseter #reset-btn').click(function () {
     var vals = $('.reseter #reset-data').val();
     if (vals) vals = vals.split(' ');
@@ -127,7 +131,10 @@ $(document).ready(function () {
       }
       if (data.length > 0) {
         var rkey = prompt('请输入重置密码：');
-        socket.emit('reset', { reset_key: rkey, data: data });
+        if (rkey) {
+          socket.emit('reset', { reset_key: rkey, data: data });
+          $('.reseter').addClass('control');
+        }
       }
     }
   });
@@ -146,9 +153,5 @@ $(document).ready(function () {
     showGetter();
   } else {
     showInputter();
-  }
-  // for admin
-  if (window.location.hash === '#reset') {
-    $('.reseter').show();
   }
 });
