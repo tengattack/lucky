@@ -6,7 +6,7 @@ function getRandomInt(min, max) {
 }
 
 function Lucky() {
-  
+
 }
 
 Lucky.prototype.init = function (cb) {
@@ -23,7 +23,7 @@ Lucky.prototype.init = function (cb) {
 Lucky.prototype.ensureIndex = function (cb) {
   var count = 0;
   var lasterr = null;
-  
+
   var fake_cb = function (err) {
     count++;
     if (err) lasterr = err;
@@ -31,7 +31,7 @@ Lucky.prototype.ensureIndex = function (cb) {
       cb(lasterr);
     }
   }
-  
+
   this.collection.ensureIndex({ name: 1 }, { background: true, w: 1 }, fake_cb);
   this.collection.ensureIndex({ lid: 1 }, { background: true, w: 1 }, fake_cb);
   this.collection.ensureIndex({ updated_at: -1 }, { background: true, w: 1 }, fake_cb);
@@ -48,11 +48,12 @@ Lucky.prototype.pushData = function (data, cb) {
       cb(lasterr);
     }
   }
-  
+
   for (var i = 0; i < data.length; i++) {
     this.collection.insert({
       lid: i + 1,
       name: '',
+      avatar: '',
       value: data[i],
       updated_at: Date.now()
     }, fake_cb);
@@ -92,7 +93,7 @@ Lucky.prototype.new = function (name, cb) {
       if (data.length <= 0) {
         return cb('no new');
       }
-      
+
       var i = getRandomInt(0, data.length);
       var sel_data = data[i];
       sel_data.name = name;
@@ -141,6 +142,16 @@ Lucky.prototype.status = function (name, cb) {
     }
     fake_cb();
   });
+};
+
+Lucky.prototype.avatar = function (name, avatar, cb) {
+  if (!name) {
+    return cb('no name');
+  }
+  this.collection.update({ name: name }, { $set: {
+    avatar: avatar,
+    updated_at: Date.now(),
+  } }, cb);
 };
 
 module.exports = Lucky;

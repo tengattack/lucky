@@ -66,6 +66,11 @@ function updateMyValue(value) {
   $('.valuer #myvalue').text(value);
   $('.valuer').show();
 }
+function updateMyAvatar(avatar) {
+  if (avatar) {
+    socket.emit('avatar', avatar);
+  }
+}
 function showGetter() {
   $('.controls > .control').hide();
   $('.getter').show();
@@ -102,9 +107,13 @@ function addToList(data) {
     + '   <span class="value">' + data.value.toString() + '</span>'
 		+ '	</div>'
 		+ '	<div class="post-info">'
-		+ '		<a href="#">'
-		+ '				<div class="user-icon user-img" style="background-color: ' + color + ';" title="" data-original-title="' + name + '">' + name[0] + '</div>'
-		+ '		</a>'
+		+ '		<a href="#">';
+  if (data.avatar) {
+    html += '		  <div class="user-icon user-img" style="background-color: ' + color + ';" title="" data-original-title="' + name + '">' + name[0] + '</div>';
+  } else {
+    html += '		  <img class="user-icon user-img" src="' + data.avatar + '" style="background-color: ' + color + ';" title="" data-original-title="' + name + '" />';
+  }
+	html += '		</a>'
 		+ '		<div class="post-author">'
 		+ '			<a href="#">' + name + '</a><br>'
 		+ '			<span class="timeago" title="' + data.updated_at.toString() + '">' + moment(data.updated_at).fromNow() + '</span>'

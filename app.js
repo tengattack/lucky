@@ -107,4 +107,14 @@ io.on('connection', function (socket) {
       }
     });
   });
+  socket.on('avatar', function (avatar) {
+    if (!socket.name || typeof avatar !== 'string') {
+      return;
+    }
+    lucky.avatar(socket.name, avatar, function (err) {
+      if (err) {
+        socket.emit('error', err);
+      }
+    })
+  });
 });
