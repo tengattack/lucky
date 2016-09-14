@@ -107,15 +107,15 @@ function addToList(data) {
     + '   <span class="value">' + data.value.toString() + '</span>'
 		+ '	</div>'
 		+ '	<div class="post-info">'
-		+ '		<a href="#">';
+		+ '		<div class="user-icon-container">';
   if (data.avatar) {
     html += '		  <img class="user-icon user-img" src="' + data.avatar + '" style="background-color: ' + color + ';" title="" data-original-title="' + name + '" />';
   } else {
     html += '		  <div class="user-icon user-img" style="background-color: ' + color + ';" title="" data-original-title="' + name + '">' + name[0] + '</div>';
   }
-	html += '		</a>'
+	html += '		</div>'
 		+ '		<div class="post-author">'
-		+ '			<a href="#">' + name + '</a><br>'
+		+ '			<div class="name">' + name + '</div>'
 		+ '			<span class="timeago" title="' + data.updated_at.toString() + '">' + moment(data.updated_at).fromNow() + '</span>'
 		+ '		</div>'
 		+ '	</div>'

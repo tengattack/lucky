@@ -174,7 +174,7 @@ body:lang(zh-CN) {
     height: 28px;
     line-height: 28px;
     font-size: 1.5rem;
-    position: absolute;
+    position: relative;
     top: 50%;
     margin-top: -14px;
     margin-left: -14px;
@@ -182,12 +182,12 @@ body:lang(zh-CN) {
 
 .posts-list .posts-list-item .post-info .post-author {
     padding-left: 25px;
-    color: #a6a6a6;
+
     /* text-transform: uppercase; */
 }
 
-.posts-list .posts-list-item .post-info .post-author a {
-    color: #777;
+.posts-list .posts-list-item .post-info .post-author .name {
+    color: #e3e5f2;
     font-weight: 900;
 }
 
@@ -253,4 +253,15 @@ nav {
 .btn.disabled {
   background-color: #1b1d37;
   pointer-events: none;
+}
+
+.user-icon-container {
+  height: 36px;
+  width: 36px;
+  border: 2px solid #fe727b;
+  background-color: #242640;
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  left: -18px;
 }
