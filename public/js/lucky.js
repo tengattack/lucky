@@ -109,9 +109,9 @@ function addToList(data) {
 		+ '	<div class="post-info">'
 		+ '		<a href="#">';
   if (data.avatar) {
-    html += '		  <div class="user-icon user-img" style="background-color: ' + color + ';" title="" data-original-title="' + name + '">' + name[0] + '</div>';
-  } else {
     html += '		  <img class="user-icon user-img" src="' + data.avatar + '" style="background-color: ' + color + ';" title="" data-original-title="' + name + '" />';
+  } else {
+    html += '		  <div class="user-icon user-img" style="background-color: ' + color + ';" title="" data-original-title="' + name + '">' + name[0] + '</div>';
   }
 	html += '		</a>'
 		+ '		<div class="post-author">'
@@ -129,6 +129,10 @@ $(document).ready(function () {
   if (window.location.hash === '#reset') {
     $('.reseter').removeClass('control').show();
   }
+  // for user avatar
+  if (window.location.hash === '#avatar') {
+    $('.avatar-setter').removeClass('control').show();
+  }
   $('.reseter #reset-btn').click(function () {
     var vals = $('.reseter #reset-data').val();
     if (vals) vals = vals.split(' ');
@@ -145,6 +149,13 @@ $(document).ready(function () {
           $('.reseter').addClass('control');
         }
       }
+    }
+  });
+  $('.avatar-setter #avatar-btn').click(function () {
+    var avatarUrl = prompt('请输入头像地址：');
+    if (avatarUrl) {
+      updateMyAvatar(avatarUrl);
+      $('.avatar-setter').addClass('control');
     }
   });
   $('.getter #get-btn').click(function () {
